@@ -1,5 +1,6 @@
 
 users
+
 column | datatype
 -------|---------
 id | integer
