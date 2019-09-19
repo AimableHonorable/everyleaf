@@ -1,7 +1,8 @@
 
 users
-id|integer
-first_name|text
-last_name|text
-email|text
-password|text
+-----
+id | integer
+first_name | text
+last_name | text
+email | text
+password | text
