@@ -3,10 +3,16 @@
 <%= link_to 'new task', new_task_path %>
 <% @tasks.each do |task| %>
   <p> 
-    <strong><%= task.title %></strong>
+    <strong>Title: </strong>
+    <%= task.title %>
   </p>
   <p>
+    <strong>Content: </strong>
     <%= task.content %>
+  </p>
+  <p>
+    <strong>Created at: </strong>
+    <%= task.created_at %>
   </p>
   <button><%= link_to 'Show', task %></button>
   <button><b<%= link_to 'Edit', edit_task_path(task) %></button>

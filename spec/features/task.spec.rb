@@ -1,27 +1,24 @@
 require 'rails_helper'
 
 RSpec.feature "Task management function", type: :feature do
-  scenario "Test task list" do
-  Task.create!(title: 'test_task_01', content: 'hello')
-  visit tasks_path
-  expect(page).to have_content 'hello'
-  end
-
-  scenario "Test task creation" do
-    visit new_task_path
-    fill_in 'Title', with: 'greeting'
-    fill_in 'Content', with: 'good'
-    click_button 'Create Task'
+  background do
+    FactoryBot.create(:task, title: 'task1', content: 'content1')
+    FactoryBot.create(:task, title: 'task2', content: 'content2')
+    FactoryBot.create(:task, title: 'task3', content: 'content3')
+    FactoryBot.create(:task, title: 'task4', content: 'content4')
     visit tasks_path
-    expect(page).to have_content 'good'
-    expect(page).to have_content 'greeting'
+  save_and_open_page
+  end
+  scenario "Test task list" do
+  
+  
+  expect(page).to have_content 'content1'
+  expect(page).to have_content 'content2'
   end
   
-  scenario "Test task details" do
-    Task.create!(title: 'fine', content: 'hello')
-    visit tasks_path
-    click_button 'Show'
-    expect(page).to have_content 'fine'
-    expect(page).to have_content 'hello'
+  #omitted
+  scenario "Test whether tasks are arranged in descending order of creation date" do
+    
+    Task.all.order('created_at desc')
   end
 end
