@@ -18,7 +18,7 @@ RSpec.feature "Task management function", type: :feature do
   
   #omitted
   scenario "Test whether tasks are arranged in descending order of creation date" do
-    
     Task.all.order('created_at desc')
+    Task.order('created_at desc').all.should == Task.all.order('created_at desc')
   end
 end
