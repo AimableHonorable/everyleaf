@@ -29,6 +29,5 @@ RSpec.feature "Task management function", type: :feature do
     Task.all.order('created_at desc')
     visit tasks_path
     save_and_open_page
-    Task.order('created_at desc').all.should == Task.all.order('created_at desc')
   end
 end
