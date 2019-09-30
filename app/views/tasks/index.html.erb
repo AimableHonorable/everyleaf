@@ -14,6 +14,14 @@
     <strong>Created at: </strong>
     <%= task.created_at %>
   </p>
+  <p>
+    <strong>Start: </strong>
+    <%= task.start_at %>
+  </p>
+  <p>
+    <strong>End: </strong>
+    <%= task.end_at %>
+  </p>
   <button><%= link_to 'Show', task %></button>
   <button><b<%= link_to 'Edit', edit_task_path(task) %></button>
   <button><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></button>

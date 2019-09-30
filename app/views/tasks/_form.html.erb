@@ -20,6 +20,14 @@
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
+  <div class="field">
+    <%= form.label :Task_start %>
+    <%= form.date_select :start_at %>
+  </div>
+  <div class="field">
+    <%= form.label :Task_end %>
+    <%= form.date_select :end_at %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
