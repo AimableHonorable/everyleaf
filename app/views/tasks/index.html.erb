@@ -1,6 +1,9 @@
 <%= t('view.sample') %>
 <h1>tasks</h1>
 <%= link_to 'new task', new_task_path %>
+<button>
+  <%= link_to 'Sort by deadline', tasks_path(sort_deadline: 'true') %>
+</button>
 <% @tasks.each do |task| %>
   <p> 
     <strong>Title: </strong>
@@ -23,7 +26,7 @@
     <%= task.end_at %>
   </p>
   <button><%= link_to 'Show', task %></button>
-  <button><b<%= link_to 'Edit', edit_task_path(task) %></button>
+  <button><%= link_to 'Edit', edit_task_path(task) %></button>
   <button><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></button>
   <hr>
 <% end %>
