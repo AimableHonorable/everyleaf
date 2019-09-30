@@ -2,7 +2,16 @@
 
 <p>
   <strong>Your task:</strong>
+  <%= @task.title %>
   <%= @task.content %>
+</p>
+<p>
+  <strong>Start:</strong>
+  <%= @task.start_at %>
+</p>
+<p>
+  <strong>End:</strong>
+  <%= @task.end_at %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
