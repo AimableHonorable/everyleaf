@@ -15,6 +15,10 @@
     <%= form.label :title %>
     <%= form.text_area :title %>
   </div>
+  <div class="field">
+    <%= form.label :Status %>
+    <%= form.select :status, ['Not started', 'In progress', 'Done']%>
+  </div>
 
   <div class="field">
     <%= form.label :content %>

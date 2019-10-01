@@ -1,4 +1,16 @@
+<%=%>
 <%= t('view.sample') %>
+<%= search_form_for @search do |f| %>
+  <p>
+    <strong><%= f.label :title_cont, "search by title" %></strong>
+    <%= f.text_field :title_cont %>
+  </p>
+  <p>
+    <strong><%= f.label :status_cont, "search by status" %></strong>
+    <%= f.text_field :status_cont %>
+  </p>
+  <%= f.submit "Search" %>
+<% end %>
 <h1>tasks</h1>
 <%= link_to 'new task', new_task_path %>
 <button>
@@ -8,6 +20,10 @@
   <p> 
     <strong>Title: </strong>
     <%= task.title %>
+  </p>
+  <p> 
+    <strong>Status: </strong>
+    <%= task.status %>
   </p>
   <p>
     <strong>Content: </strong>

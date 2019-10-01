@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Task management function", type: :feature do
   background do
-    FactoryBot.create(:task, title: 'task1', content: 'content1', start_at: '2019-10-01', end_at: '2019-10-02')
-    FactoryBot.create(:task, title: 'task2', content: 'content2', start_at: '2019-10-03', end_at: '2019-10-04')
-    FactoryBot.create(:task, title: 'task3', content: 'content3', start_at: '2019-10-05', end_at: '2019-10-06')
-    FactoryBot.create(:task, title: 'task4', content: 'content4', start_at: '2019-10-07', end_at: '2019-10-08')
+    FactoryBot.create(:task, title: 'task1', status: 'Not started', content: 'content1', start_at: '2019-10-01', end_at: '2019-10-02')
+    FactoryBot.create(:task, title: 'task2', status: 'In progress', content: 'content2', start_at: '2019-10-03', end_at: '2019-10-04')
+    FactoryBot.create(:task, title: 'task3', status: 'Done', content: 'content3', start_at: '2019-10-05', end_at: '2019-10-06')
     
   end
   
@@ -34,6 +33,28 @@ RSpec.feature "Task management function", type: :feature do
     save_and_open_page
     assert Task.all.order('end_at desc')
     
+  end
+  scenario "Test search by title" do
+    visit tasks_path
+    fill_in 'title', with: 'task1'
+    click_button 'Search'
+    expect(page).to have_content 'task1'
+  end
+
+  scenario "Test search by status" do
+    visit tasks_path
+    fill_in 'status', with: 'In progress'
+    click_button 'Search'
+    expect(page).to have_content 'In progress'
+  end
+
+  scenario "Test search by both title and status" do
+    visit tasks_path
+    fill_in 'title', with: 'task3'
+    fill_in 'status', with: 'Done'
+    click_button 'Search'
+    expect(page).to have_content 'task3'
+    expect(page).to have_content 'Done'
   end
 
 end
