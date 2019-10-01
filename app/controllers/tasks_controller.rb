@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   def index
     if params[:sort_deadline]
       @tasks = Task.all.order('end_at DESC')
+    elsif params[:search_task]
+      @tasks = Task.where('title LIKE ? or status LIKE ? ', "%#{params[:search_task]}", "%#{params[:search_task]}")
     else
       @tasks = Task.all.order('created_at DESC')
     end
@@ -64,6 +66,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :content, :start_at, :end_at)
+      params.require(:task).permit(:title, :content, :status, :start_at, :end_at)
     end
 end

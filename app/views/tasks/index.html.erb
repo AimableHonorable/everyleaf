@@ -1,4 +1,8 @@
 <%= t('view.sample') %>
+<%= form_tag(tasks_path, method: :get) do %>
+  <%= text_field_tag :search_task, params[:search_task] %>
+  <%= submit_tag 'Search' %>
+<% end %>
 <h1>tasks</h1>
 <%= link_to 'new task', new_task_path %>
 <button>
@@ -8,6 +12,10 @@
   <p> 
     <strong>Title: </strong>
     <%= task.title %>
+  </p>
+  <p> 
+    <strong>Status: </strong>
+    <%= task.status %>
   </p>
   <p>
     <strong>Content: </strong>
