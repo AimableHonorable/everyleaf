@@ -12,9 +12,15 @@
   <%= f.submit "Search" %>
 <% end %>
 <h1>tasks</h1>
+<button>
 <%= link_to 'new task', new_task_path %>
+</button>
 <button>
   <%= link_to 'Sort by deadline', tasks_path(sort_deadline: 'true') %>
+</button>
+
+<button>
+  <%= link_to 'Sort by Priority', tasks_path(sort_priority: 'true') %>
 </button>
 <% @tasks.each do |task| %>
   <p> 
@@ -25,6 +31,12 @@
     <strong>Status: </strong>
     <%= task.status %>
   </p>
+
+  <p>
+    <strong>Priority:</strong>
+    <%= task.priority %>
+  </p>
+
   <p>
     <strong>Content: </strong>
     <%= task.content %>

@@ -21,6 +21,13 @@
   </div>
 
   <div class="field">
+    <%= form.label :Priority %>
+    <%= form.radio_button :priority, 'low'%>Low 
+    <%= form.radio_button :priority, 'medium'%>Medium 
+    <%= form.radio_button :priority, 'high'%>High 
+  </div>
+
+  <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
