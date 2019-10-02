@@ -14,9 +14,6 @@ class TasksController < ApplicationController
 
   def show
   end
-  def sort
-    
-  end
 
   def new
     @task = Task.new
