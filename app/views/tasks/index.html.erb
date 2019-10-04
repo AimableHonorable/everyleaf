@@ -1,5 +1,6 @@
 <%=%>
 <%= t('view.sample') %>
+
 <%= search_form_for @search do |f| %>
   <p>
     <strong><%= f.label :title_cont, "search by title" %></strong>
@@ -22,6 +23,9 @@
 <button>
   <%= link_to 'Sort by Priority', tasks_path(sort_priority: 'true') %>
 </button>
+
+<%= paginate @tasks %>
+
 <% @tasks.each do |task| %>
   <p> 
     <strong>Title: </strong>

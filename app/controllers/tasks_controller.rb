@@ -4,13 +4,13 @@ class TasksController < ApplicationController
   def index
     @search = Task.ransack(params[:q])
     if params[:q]
-      @tasks = @search.result
+      @tasks = @search.result.page(params[:page]).per(2)
     elsif params[:sort_deadline]
-      @tasks = Task.all.order('end_at DESC')
+      @tasks = Task.all.order('end_at DESC').page(params[:page]).per(2)
     elsif params[:sort_priority]
-      @tasks = Task.all.order('priority DESC')
+      @tasks = Task.all.order('priority DESC').page(params[:page]).per(2)
     else
-      @tasks = Task.all.order('created_at DESC')
+      @tasks = Task.all.order('created_at DESC').page(params[:page]).per(2)
     end
   end
 
