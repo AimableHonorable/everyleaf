@@ -10,7 +10,7 @@ RSpec.feature "Task management function", type: :feature do
   
   scenario "Test task list" do
     visit tasks_path
-    expect(page).to have_content 'content1'
+    expect(page).to have_content 'content3'
     expect(page).to have_content 'content2'
   end
   
