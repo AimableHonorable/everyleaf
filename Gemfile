@@ -45,6 +45,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'launchy'
   gem 'ransack'
+  gem 'kaminari'
 end
 
 group :development do
