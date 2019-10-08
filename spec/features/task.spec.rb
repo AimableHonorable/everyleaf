@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Task management function", type: :feature do
   background do
-    FactoryBot.create(:task, title: 'task1', status: 'Not started', content: 'content1', start_at: '2019-10-01', end_at: '2019-10-02')
-    FactoryBot.create(:task, title: 'task2', status: 'In progress', content: 'content2', start_at: '2019-10-03', end_at: '2019-10-04')
-    FactoryBot.create(:task, title: 'task3', status: 'Done', content: 'content3', start_at: '2019-10-05', end_at: '2019-10-06')
+    FactoryBot.create(:task, title: 'task1', status: 'Not started', content: 'content1', priority:'low', start_at: '2019-10-01', end_at: '2019-10-02')
+    FactoryBot.create(:task, title: 'task2', status: 'In progress', content: 'content2', priority:'medium', start_at: '2019-10-03', end_at: '2019-10-04')
+    FactoryBot.create(:task, title: 'task3', status: 'Done', content: 'content3', priority:'high', start_at: '2019-10-05', end_at: '2019-10-06')
     
   end
   
@@ -59,7 +59,8 @@ RSpec.feature "Task management function", type: :feature do
 
   scenario "Test sort by priority" do
     visit tasks_path
-    click_button 'Sort by deadline'
+    click_button 'Sort by Priority'
+    save_and_open_page
     assert Task.all.order('priority desc')
   end
 
