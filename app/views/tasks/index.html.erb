@@ -1,22 +1,28 @@
 <div class="bg-white">
-<div class="float-right" >
-<%= t('view.sample')%>
-</div>
-
 
 
 
 <h1 class="mt-4 text-center">Available tasks</h1>
 <div class="row">
-<div class=" col  px-5">
+<div class=" col-6  px-5">
   <%= paginate @tasks %>
 </div>
-<div class=" col  form-inline my-2 my-lg-0"><%= search_form_for @search do |f| %>
-  <div class="float-right">
-    <%= f.text_field :title_cont, placeholder:"Search by title", class:"field form-control mr-sm-2"%>
-    <%= f.text_field :status_cont, placeholder:"Search by status", class:"field form-control mr-sm-2" %> 
-  <%= f.submit "Search", class:"btn btn-outline-info my-2 my-sm-0 p-2"%>
-  </div>
+<div class=" col-6  form-inline my-2 my-lg-0"><%= search_form_for @search do |f| %>
+  <div class="row float-right">
+    <div class="mx-4">
+      <%= f.label :title_cont, "Search with title"  %>
+      <%= f.text_field :title_cont, class:"field form-control mr-sm-2"%>
+    </div>
+    <div class>
+      <div class="row">
+      <div>
+        <%= f.label :status_cont, "Search with status" %>
+        <%= f.text_field :status_cont, class:"field form-control mr-sm-2" %> 
+        </div>
+        <%= f.submit "Search", class:"btn btn-outline-info my-2 my-sm-0"%>
+      </div>
+    </div>
+    </div>
 <% end %>
 </div>
 </div>
