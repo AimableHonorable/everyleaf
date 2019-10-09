@@ -1,64 +1,59 @@
-<%=%>
-<%= t('view.sample') %>
+<div class="bg-white">
 
-<%= search_form_for @search do |f| %>
-  <p>
-    <strong><%= f.label :title_cont, "search by title" %></strong>
-    <%= f.text_field :title_cont %>
-  </p>
-  <p>
-    <strong><%= f.label :status_cont, "search by status" %></strong>
-    <%= f.text_field :status_cont %>
-  </p>
-  <%= f.submit "Search" %>
+
+
+<h1 class="mt-4 text-center">Available tasks</h1>
+<div class="row">
+<div class=" col-6  px-5">
+  <%= paginate @tasks %>
+</div>
+<div class=" col-6  form-inline my-2 my-lg-0"><%= search_form_for @search do |f| %>
+  <div class="row float-right">
+    <div class="mx-4">
+      <%= f.label :title_cont, "Search with title"  %>
+      <%= f.text_field :title_cont, class:"field form-control mr-sm-2"%>
+    </div>
+    <div class>
+      <div class="row">
+      <div>
+        <%= f.label :status_cont, "Search with status" %>
+        <%= f.text_field :status_cont, class:"field form-control mr-sm-2" %> 
+        </div>
+        <%= f.submit "Search", class:"btn btn-outline-info my-2 my-sm-0"%>
+      </div>
+    </div>
+    </div>
 <% end %>
-<h1>tasks</h1>
-<button>
-<%= link_to 'new task', new_task_path %>
-</button>
-<button>
-  <%= link_to 'Sort by deadline', tasks_path(sort_deadline: 'true') %>
-</button>
-
-<button>
-  <%= link_to 'Sort by Priority', tasks_path(sort_priority: 'true') %>
-</button>
-
-<%= paginate @tasks %>
+</div>
+</div>
 
 <% @tasks.each do |task| %>
-  <p> 
-    <strong>Title: </strong>
-    <%= task.title %>
-  </p>
-  <p> 
-    <strong>Status: </strong>
-    <%= task.status %>
-  </p>
-
-  <p>
-    <strong>Priority:</strong>
-    <%= task.priority %>
-  </p>
-
-  <p>
-    <strong>Content: </strong>
-    <%= task.content %>
-  </p>
-  <p>
-    <strong>Created at: </strong>
-    <%= task.created_at %>
-  </p>
-  <p>
-    <strong>Start: </strong>
-    <%= task.start_at %>
-  </p>
-  <p>
-    <strong>End: </strong>
-    <%= task.end_at %>
-  </p>
-  <button><%= link_to 'Show', task %></button>
-  <button><%= link_to 'Edit', edit_task_path(task) %></button>
-  <button><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-  <hr>
+  <div class="mx-5 p-4 border rounded my-2 bg-light">
+    <%= task.created_at.strftime("%Hh%M min %Y, %B, %d") %>
+    <h5 class="my-2"> 
+      <strong><%= task.title %></strong>
+    </h5>
+    <h6>This task is scheduled to start on <strong><%= task.start_at.strftime("%B, %d, %Y") %></strong> and it must end before <strong><%= task.end_at.strftime("%B, %d, %Y") %></strong><h6>
+    <p class="mx-2 bg-white p-2">
+      <%= task.content %>
+    </p>
+    <div class="row">
+      
+      <div class="col col-10">
+        <button class="btn btn-outline-info"><%= link_to 'Show', task %></button>
+        <button class="btn btn-outline-primary"><%= link_to 'Edit', edit_task_path(task) %></button>
+        <button class="btn btn-outline-danger"><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      </div>
+      <div class="col">
+        <p> 
+          <strong>Status: </strong>
+          <%= task.status %><br>
+          <strong>Priority:</strong>
+          <%= task.priority %>
+        </p>
+      </div>
+    </div>
+  </div>
 <% end %>
+<div class="px-5"><%= paginate @tasks %></div>
+</div>
