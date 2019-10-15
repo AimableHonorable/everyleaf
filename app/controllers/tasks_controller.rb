@@ -25,11 +25,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-
+    @task = current_user.tasks.build(task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -41,7 +40,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
