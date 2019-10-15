@@ -10,7 +10,10 @@
         <%= form.password_field :password, placeholder:"password", class:"form-control" %>
       </div>
       <div class="actions text-center mt-4">
-        <%= form.submit "Login", class:"btn btn-info " %>
+        <%= form.submit "Login", class:"btn btn-info rounded-pill shadow-sm" %>
+      </div>
+      <div class="field text-center">
+        <p>If you don't have account, <b class="text-info"><%= link_to "Signup", new_user_path %></b></p>
       </div>
     </div>
   </div>

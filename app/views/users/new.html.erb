@@ -1,0 +1,42 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @user, local: true) do |form| %>
+
+  <div class="mt-4 pt-5">
+
+    <div class="form-group w-25 mx-auto my-4 border rounded p-4 bg-light shadow-sm">
+      <h2 class="text-center">Create your account</h2>
+
+      <div class="field">
+        <%= form.text_field :firstname, placeholder:"First Name", class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.text_field :lastname, placeholder:"Last Name", class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.email_field :email, placeholder:"Email", class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.password_field :password, placeholder:"New Password", class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.password_field :password_coonfirmation, placeholder:"Confirm Password", class:"form-control" %>
+      </div>
+
+      <div class="actions text-center mt-4">
+        <%= form.submit "Signup", class:"btn btn-info rounded-pill" %>
+      </div>
+      <div class="field text-center">
+        <p>Already a member? <b class="text-info"><%= link_to "Login", new_session_path %></b></p>
+      </div>
+    </div>
+  </div>
+<% end %>
