@@ -33,6 +33,9 @@
                 <a  href="#"><%= link_to 'Sort by Priority', tasks_path(sort_priority: 'true') %></a>
               </li>
               <li class="nav-item">
+                <a  href="#"><%= link_to 'My page', user_path(current_user.id) %></a>
+              </li>
+              <li class="nav-item">
                 <a  href="#"><%= link_to "Logout", session_path(current_user.id), method: :delete %></a>
               </li>
 
