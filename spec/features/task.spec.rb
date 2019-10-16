@@ -5,15 +5,15 @@ RSpec.feature "Task management function", type: :feature do
     FactoryBot.create(:task, title: 'task1', status: 'Not started', content: 'content1', priority:'low', start_at: '2019-10-01', end_at: '2019-10-02')
     FactoryBot.create(:task, title: 'task2', status: 'In progress', content: 'content2', priority:'medium', start_at: '2019-10-03', end_at: '2019-10-04')
     FactoryBot.create(:task, title: 'task3', status: 'Done', content: 'content3', priority:'high', start_at: '2019-10-05', end_at: '2019-10-06')
-    
+
   end
-  
+
   scenario "Test task list" do
     visit tasks_path
     expect(page).to have_content 'content3'
     expect(page).to have_content 'content2'
   end
-  
+
   scenario "Test task creation" do
     visit new_task_path
     fill_in 'Title', with: 'greeting'
@@ -32,7 +32,7 @@ RSpec.feature "Task management function", type: :feature do
     click_link 'Sort by deadline'
     save_and_open_page
     assert Task.all.order('end_at desc')
-    
+
   end
   scenario "Test search by title" do
     visit tasks_path
