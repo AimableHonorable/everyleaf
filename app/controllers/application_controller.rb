@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-  def authenticate_user!
+  def login_first!
     if !logged_in?
       redirect_to new_session_path, notice: "Please Login to view that page!"
     end
