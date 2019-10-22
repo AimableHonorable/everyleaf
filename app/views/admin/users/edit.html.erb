@@ -4,18 +4,23 @@
 
     <%= form_with(model: @user, :url =>admin_user_path(@user), local: true) do |form| %>
       <div class="field">
+        <%= form.label :firstname %>
         <%= form.text_field :firstname, placeholder:"First Name", class:"form-control" %>
       </div>
       <div class="field">
+        <%= form.label :lastname %>
         <%= form.text_field :lastname, placeholder:"Last Name", class:"form-control" %>
       </div>
       <div class="field">
+        <%= form.label :email %>
         <%= form.email_field :email, placeholder:"Email", class:"form-control" %>
       </div>
       <div class="field">
+        <%= form.label :password %>
         <%= form.password_field :password, placeholder:"New Password", class:"form-control" %>
       </div>
       <div class="field">
+        <%= form.label :password_confirmation %>
         <%= form.password_field :password_coonfirmation, placeholder:"Confirm Password", class:"form-control" %>
       </div>
 
