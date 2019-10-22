@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    @tasks = Task.all
   end
 
   def edit
