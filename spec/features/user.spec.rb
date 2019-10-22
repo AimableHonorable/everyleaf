@@ -1,7 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature "User Login management", type: :feature do
 
+RSpec.feature "User Login management", type: :feature do
+  background do
+    FactoryBot.create(:user, firstname: 'ange',
+                             lastname: 'angel',
+                             email: 'ange@gmail.com',
+                             password: 'password',
+                             password_confirmation: 'password')
+  end
   let(:user) { FactoryBot.create(:user) }
 
   scenario "user registration with successful validations" do
@@ -19,7 +26,6 @@ RSpec.feature "User Login management", type: :feature do
     fill_in 'Email', with: 'cherif@gmail.com'
     fill_in 'Password', with: 'password'
     click_button 'Login'
-    save_and_open_page
     expect(current_path).to eq '/tasks'
     click_link 'Logout'
     expect(current_path).to eq '/sessions/new'
@@ -27,6 +33,12 @@ RSpec.feature "User Login management", type: :feature do
   scenario "expect page to redirect to login when not logged in" do
     visit tasks_path
     save_and_open_page
+  end
+
+  scenario "test user creation and user list on the admin page" do
+    visit admin_users_path
+    save_and_open_page
+    expect(page).to have_content 'angel'
   end
 
 end
