@@ -1,0 +1,22 @@
+
+<%= form_with(model: @user, :url =>admin_users_path(@user), local: true) do |form| %>
+  <div class="field">
+    <%= form.text_field :firstname, placeholder:"First Name", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= form.text_field :lastname, placeholder:"Last Name", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= form.email_field :email, placeholder:"Email", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= form.password_field :password, placeholder:"New Password", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= form.password_field :password_coonfirmation, placeholder:"Confirm Password", class:"form-control" %>
+  </div>
+
+  <div class="actions text-center mt-4">
+    <%= form.submit "Save", class:"btn btn-info rounded-pill" %>
+  </div>
+<% end %>
