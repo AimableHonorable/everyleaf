@@ -42,12 +42,13 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.present?
+    if @user.id == current_user.id
+      redirect_to admin_users_path, notice: "Logged in user cannot be deleted!"
+    else
       @user.destroy
+      redirect_to admin_users_path, notice: 'User deleted.'
     end
-    redirect_to admin_users_path, notice: 'New user was successfully destroyed.'
   end
-
   private
 
   def set_user
