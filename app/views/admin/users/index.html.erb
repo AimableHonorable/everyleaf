@@ -19,6 +19,7 @@
         <th scope="col">Last name</th>
         <th scope="col">Email</th>
         <th scope="col">Tasks</th>
+        <th scope="col">Admin</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -37,8 +38,12 @@
         <td>
           <%= user.email %>
         </td>
+
         <td>
           <%= user.tasks.size%> Tasks
+        </td>
+        <td>
+          <%= user.admin %>
         </td>
         <td class="w-25">
           <button class="btn btn-outline-info rounded-pill">
