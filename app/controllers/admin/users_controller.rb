@@ -1,5 +1,12 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_admin
+  def ensure_admin
+    unless current_user and current_user.admin
+      redirect_to new_session_path, notice: "Only admin can view this page. Please login as admin!"
+
+    end
+  end
   def index
     @users = User.all.order('id ASC')
   end
