@@ -23,6 +23,9 @@
         <%= form.label :password_confirmation %>
         <%= form.password_field :password_coonfirmation, placeholder:"Confirm Password", class:"form-control" %>
       </div>
+      <div class="field">
+        <%= form.check_box :admin %> Admin
+      </div>
 
       <div class="actions text-center mt-4">
         <%= form.submit "Save", class:"btn btn-info rounded-pill" %>

@@ -10,12 +10,12 @@ RSpec.feature "Task management function", type: :feature do
 
   scenario "Test task list" do
     visit tasks_path
-    expect(page).to have_content 'content3'
-    expect(page).to have_content 'content2'
+    expect(page).to have_content 'Please Login to view that page'
   end
 
   scenario "Test task creation" do
-    visit new_task_path
+    visit new_task_path(user)
+    save_and_open_page
     fill_in 'Title', with: 'greeting'
     fill_in 'Content', with: 'good'
     click_button 'Save'

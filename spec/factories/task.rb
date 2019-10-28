@@ -9,6 +9,6 @@ FactoryBot.define do
 
   # Name the test data to be created as "second_task"
   # (If you want to name a non-existent class name, optionally specify "Please make test data of this class")
-  
-  
+
+
 end
