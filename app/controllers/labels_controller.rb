@@ -22,6 +22,14 @@ class LabelsController < ApplicationController
   def edit
   end
 
+  def update
+    if @label.update(label_params)
+      redirect_to labels_path, notice: 'Label was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_label
