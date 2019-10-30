@@ -30,6 +30,11 @@ class LabelsController < ApplicationController
     end
   end
 
+  def destroy
+   @label.destroy
+   redirect_to labels_url, notice: 'Label was successfully destroyed.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_label
