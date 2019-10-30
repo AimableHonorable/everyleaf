@@ -40,6 +40,14 @@
     <%= form.label :Task_end, "Task ends: ", class:"mr-2"  %>
     <%= form.date_select :end_at %>
   </div>
+  <b class="ml-2">Labels</b>
+    <% Label.all.each do |label| %>
+    <div class="row ml-4">
+      <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+      <%= form.label:name, label.name %>
+    </div>
+
+    <% end %>
 
   <div class="actions text-center mt-4">
     <%= form.submit "Save", class:"btn btn-info " %>
