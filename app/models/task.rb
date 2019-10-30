@@ -4,4 +4,5 @@ class Task < ApplicationRecord
   validates :content, presence:true
   enum priority: [:low, :medium, :high]
   paginates_per 2
+  has_many :task_labels, dependent: :destroy
 end
