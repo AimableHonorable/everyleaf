@@ -36,11 +36,12 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.id == current_user.id
-      redirect_to admin_users_path, notice: "Logged in user cannot be deleted!"
       @admins = User.admin
-    elsif @admins == 1
-      redirect_to admin_users_path, notice: "At least one user or admin should remain"
+    if @admins == 1
+      redirect_to admin_users_path, notice: "Atleast one user or admin should remain"
+#prevent not to delete logged in user
+    elsif @user.id == current_user.id
+        redirect_to admin_users_path, notice: "Logged in user cannot be deleted!"
     else
       @user.destroy
       redirect_to admin_users_path, notice: 'User deleted.'
