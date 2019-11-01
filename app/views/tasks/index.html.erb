@@ -55,6 +55,12 @@
             </p>
           </div>
         </div>
+        <h6>Labels</h6>
+        <% task.labels.each do |label| %>
+          <li class="ml-4">
+          <%= label.name%>
+          </li>
+        <% end %>
       </div>
     <% end %>
   <% end %>

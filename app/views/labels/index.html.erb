@@ -1,14 +1,20 @@
-<div class="mx-5 text-center">
+<div class="w-75 mx-auto text-center">
 
-
-<h1>labels</h1>
-<table class = "table table-bordered w-75 mx-auto">
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-outline-dark rounded-pill mt-5">
+        <%= link_to 'Create Label', new_label_path %>
+      </button>
+    </div>
+    <div class="col-8">
+      <h1 class="text-center my-4">Labels</h1>
+    </div>
+  </div>
+<table class = "table table-bordered ">
   <thead class="bg-dark text-light">
     <tr>
-      <th>Title</th>
-      <th>Content</th>
+      <th>Label Name</th>
       <th>User</th>
-
       <th colspan="3">More Actions</th>
     </tr>
   </thead>
@@ -17,7 +23,6 @@
     <% @labels.each do |label| %>
       <tr>
         <td><%= label.name %></td>
-        <td><%= label.content %></td>
         <td><%= label.user.firstname %></td>
         <td>
         <button class="btn btn-outline-info rounded-pill"><%= link_to 'Show', label %></button>

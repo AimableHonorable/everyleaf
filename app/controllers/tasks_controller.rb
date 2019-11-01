@@ -12,6 +12,7 @@ class TasksController < ApplicationController
       @tasks = Task.all.order('priority DESC').page(params[:page])
     else
       @tasks = Task.all.order('created_at DESC').page(params[:page])
+
     end
   end
 
