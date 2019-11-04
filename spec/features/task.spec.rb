@@ -1,22 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Task management function", type: :feature do
-  background do
-    FactoryBot.create(:user, firstname: 'ange',
-                             lastname: 'angel',
-                             email: 'ange@gmail.com',
-                             password: 'password',
-                             password_confirmation: 'password')
-    visit new_session_path
-    fill_in 'Email', with: 'ange@gmail.com'
-    fill_in 'Password', with: 'password'
-    click_button 'Login'
-    @user = User.first
-    FactoryBot.create(:task, title: 'task1', status: 'Not started', content: 'content1', priority:'low', start_at: '2019-10-01', end_at: '2019-10-02', user_id: @user.id)
-    FactoryBot.create(:task, title: 'task2', status: 'In progress', content: 'content2', priority:'medium', start_at: '2019-10-03', end_at: '2019-10-04', user_id: @user.id)
-    FactoryBot.create(:task, title: 'task3', status: 'Done', content: 'content3', priority:'high', start_at: '2019-10-05', end_at: '2019-10-06', user_id: @user.id)
-
-  end
+]
 
   scenario "Test task list" do
     visit tasks_path
