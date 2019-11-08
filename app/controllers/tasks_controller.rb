@@ -6,12 +6,16 @@ class TasksController < ApplicationController
     @search = Task.ransack(params[:q])
     if params[:q]
       @tasks = @search.result.page(params[:page])
+    elsif params[:search_label]
+    @tasks = Task.joins(:labels)
+        .where("labels.name ILIKE ?", "%#{params[:search_label]}%").page (params[:page])
     elsif params[:sort_deadline]
       @tasks = Task.all.order('end_at DESC').page(params[:page])
     elsif params[:sort_priority]
       @tasks = Task.all.order('priority DESC').page(params[:page])
     else
       @tasks = Task.all.order('created_at DESC').page(params[:page])
+
     end
   end
 
@@ -66,6 +70,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :content, :status, :priority, :start_at, :end_at)
+      params.require(:task).permit(:title, :content, :status, :priority, :start_at, :end_at, :search_label, label_ids: [])
     end
 end
