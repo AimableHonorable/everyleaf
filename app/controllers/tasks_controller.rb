@@ -5,16 +5,16 @@ class TasksController < ApplicationController
   def index
     @search = Task.ransack(params[:q])
     if params[:q]
-      @tasks = @search.result.page(params[:page])
+      @tasks = @search.result.page params[:page]
     elsif params[:search_label]
     @tasks = Task.joins(:labels)
-        .where("labels.name ILIKE ?", "%#{params[:search_label]}%").page (params[:page])
+        .where("labels.name ILIKE ?", "%#{params[:search_label]}%").page params[:page]
     elsif params[:sort_deadline]
-      @tasks = Task.all.order('end_at DESC').page(params[:page])
+      @tasks = Task.all.order('end_at DESC').page params[:page]
     elsif params[:sort_priority]
-      @tasks = Task.all.order('priority DESC').page(params[:page])
+      @tasks = Task.all.order('priority DESC').page params[:page]
     else
-      @tasks = Task.all.order('created_at DESC').page(params[:page])
+      @tasks = Task.all.order('created_at DESC').page params[:page]
 
     end
   end
